@@ -7,8 +7,8 @@
 # Project's home page: 
 # https://pythonadventures.wordpress.com/2011/03/25/get-the-imdb-rating-of-a-movie/
 #
-# Version: 0.1 
-# Date:    2011-03-25 (yyyy-mm-dd)
+# Version: 0.2 
+# Date:    2011-03-29 (yyyy-mm-dd)
 #
 # Inspired by the script of Rag Sagar:
 # https://ragsagar.wordpress.com/2010/11/20/python-script-to-find-imdb-rating/

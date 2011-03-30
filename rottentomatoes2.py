@@ -7,8 +7,8 @@
 # Project's home page: 
 # https://pythonadventures.wordpress.com/2011/03/26/get-the-rottentomatoes-rating-of-a-movie/
 #
-# Version: 0.1 
-# Date:    2011-03-26 (yyyy-mm-dd)
+# Version: 0.2 
+# Date:    2011-03-29 (yyyy-mm-dd)
 #
 # This free software is copyleft licensed under the same terms as Python, or,
 # at your option, under version 2 of the GPL license.

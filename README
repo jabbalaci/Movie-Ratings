@@ -2,8 +2,7 @@ Movie Ratings
 =============
 
 Author:      Laszlo Szathmary (jabba.laci@gmail.com)
-Last update: 2011-03-29 (yyyy-mm-dd)
-Version:     0.2
+Date:        March, 2011
 
 Home page:   https://pythonadventures.wordpress.com/2011/03/25/get-the-imdb-rating-of-a-movie/
              https://pythonadventures.wordpress.com/2011/03/26/get-the-rottentomatoes-rating-of-a-movie/
@@ -12,7 +11,7 @@ GitHub:      https://github.com/jabbalaci/Movie-Ratings
 This free software is copyleft licensed under the same terms as Python, or,
 at your option, under version 2 of the GPL license.
 
-Get the rating of a movie from IMDB (http://www.imdb.com/)
+Get the ratings of a movie from IMDB (http://www.imdb.com/)
 and Rotten Tomatoes (http://www.rottentomatoes.com/).
 
 
