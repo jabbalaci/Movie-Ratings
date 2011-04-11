@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-#
+"""Get the rating of a movie on RottenTomatoes.com."""
+
 # RottenTomatoesRating
 # Laszlo Szathmary, 2011 (jabba.laci@gmail.com)
 #
@@ -12,19 +13,21 @@
 #
 # This free software is copyleft licensed under the same terms as Python, or,
 # at your option, under version 2 of the GPL license.
-#
 
-from BeautifulSoup import BeautifulSoup
 import sys
 import re
 import urllib
 import urlparse
 
+from BeautifulSoup import BeautifulSoup
+
 
 class MyOpener(urllib.FancyURLopener):
+    """Tricking web servers."""
     version = 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.15) Gecko/20110303 Firefox/3.6.15'
     
 class RottenTomatoesRating:
+    """Get the rating of a movie."""
     # title of the movie
     title = None
     # RT URL of the movie
@@ -51,6 +54,7 @@ class RottenTomatoesRating:
         self._process()
         
     def _search_movie(self):
+        """Use RT's own search and return the first hit."""
         movie_url = ""
         
         url = self.SEARCH_URL + self.title
@@ -71,6 +75,9 @@ class RottenTomatoesRating:
         return urlparse.urljoin( self.BASE_URL, movie_url )
         
     def _process(self):
+        """Start the work."""
+        
+        # if search option is off, i.e. try to locate the movie directly 
         if not self.search:
             movie = '_'.join(self.title.split())
             
@@ -79,13 +86,15 @@ class RottenTomatoesRating:
             if soup.find('title').contents[0] == "Page Not Found":
                 url = self._search_movie()                
         else:
+            # if search option is on => use RT's own search
             url = self._search_movie()
 
         try:
             self.url = url
             soup = BeautifulSoup( self.myopener.open(url).read() )
             self.title = soup.find('meta', {'property' : 'og:title'})['content']
-            if self.title: self.found = True
+            if self.title:
+                self.found = True
             
             self.tomatometer = soup.find('span', {'id' : 'all-critics-meter'}).contents[0]
             self.audience = soup.find('span', {'class' : 'meter popcorn numeric '}).contents[0]
