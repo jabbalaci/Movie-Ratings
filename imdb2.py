@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-#
+"""Get the rating of a movie on IMDB."""
+
 # ImdbRating
 # Laszlo Szathmary, 2011 (jabba.laci@gmail.com)
 #
@@ -15,9 +16,7 @@
 #
 # This free software is copyleft licensed under the same terms as Python, or,
 # at your option, under version 2 of the GPL license.
-#
 
-import os
 import sys
 import re
 import urllib
@@ -27,9 +26,11 @@ from mechanize import Browser
 from BeautifulSoup import BeautifulSoup
 
 class MyOpener(urllib.FancyURLopener):
+    """Tricking web servers."""
     version = 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.15) Gecko/20110303 Firefox/3.6.15'
 
 class ImdbRating:
+    """Get the rating of a movie."""
     # title of the movie
     title = None
     # IMDB URL of the movie
@@ -47,6 +48,7 @@ class ImdbRating:
         self._process()
         
     def _process(self):
+        """Start the work."""
         movie = '+'.join(self.title.split())
         br = Browser()
         url = "%s/find?s=tt&q=%s" % (self.BASE_URL, movie)
@@ -63,7 +65,7 @@ class ImdbRating:
 
         try:
             self.title = soup.find('h1').contents[0].strip()
-            self.rating = soup.find('span',attrs='rating-rating').contents[0]
+            self.rating = soup.find('span', attrs='rating-rating').contents[0]
             self.found = True
         except:
             pass
