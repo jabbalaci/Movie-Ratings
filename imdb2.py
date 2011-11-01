@@ -63,12 +63,16 @@ class ImdbRating:
             self.url = urlparse.urljoin(self.BASE_URL, link.url)
             soup = BeautifulSoup(res.read())
 
-        try:
-            self.title = soup.find('h1').contents[0].strip()
-            self.rating = soup.find('span', attrs='rating-rating').contents[0]
-            self.found = True
-        except:
-            pass
+        #try:
+        self.title = soup.find('h1').contents[0].strip()
+        for span in soup.findAll('span'):
+            if span.has_key('itemprop') and span['itemprop'] == 'ratingValue':
+                self.rating = span.contents[0]
+                break
+        #self.rating = soup.find('span', attrs='itemprop').contents[0]
+        self.found = True
+        #except:
+            #pass
 
 # class ImdbRating
 
